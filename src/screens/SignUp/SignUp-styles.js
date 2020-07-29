@@ -40,26 +40,18 @@ export default StyleSheet.create({
 		height: Metrics.screenHeight * 0.8,
 		zIndex: -1,
 	},
-	registerContainer: {
-		flexDirection: 'row',
-		justifyContent: 'center',
-		position: 'absolute',
-		width: Metrics.screenWidth,
-		bottom: 30,
-	},
-	registerLabel: {
-		fontWeight: "500",
-		fontSize: 16,
-	},
-	registerCTA: {
-		fontWeight: "700",
-		fontSize: 16,
-		marginLeft: 5,	
-		color: "#ffc402",	
-	},
 	content: {
 		marginTop: 60,
 		justifyContent: 'flex-end',
 		height: Metrics.screenHeight * 0.6,
+	},
+	backBtn: {
+		width: 40,
+	},
+	backBtnContainer: {
+		top: 35,
+		position: 'absolute',
+		left: 30,
+		zIndex: 2,
 	}
 })
