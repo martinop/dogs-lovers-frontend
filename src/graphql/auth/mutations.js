@@ -10,12 +10,12 @@ export const LOGIN = gql`
 			input: {
 				email: $email
 				password: $password
-				role: $role
 			}
 		) {
 			message
 			data {
 				token
+				role
 			}
 		}
 	}

@@ -1,7 +1,7 @@
 import { Alert } from 'react-native';
 
-export default (title, subtitle, onPress) =>
-	Alert.alert(
+export default function InfoAlert(title, subtitle, onPress) {
+	return Alert.alert(
 		title,
 		subtitle,
 		[
@@ -12,3 +12,4 @@ export default (title, subtitle, onPress) =>
 		],
 		{ cancelable: false }
 	);
+}

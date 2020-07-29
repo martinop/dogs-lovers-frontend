@@ -4,7 +4,6 @@ export default StyleSheet.create({
 	btn: {
 		alignSelf: 'center',
 		width: '100%',
-		flexDirection: 'row',
 		justifyContent: 'center',
 		alignItems: 'center',
 		backgroundColor: 'yellow',
@@ -19,5 +18,8 @@ export default StyleSheet.create({
 	},
 	loader: {
 		marginRight: 10,
+	},
+	row: {
+		flexDirection: 'row',
 	}
 })

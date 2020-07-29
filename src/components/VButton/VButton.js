@@ -6,9 +6,10 @@ import LinearGradient from 'react-native-linear-gradient';
 const activeColors = ["#ffc402", "#ebae00"];
 const disabledColors = ["#dedede", "#c9c9c9"];
 function VButton(props) {
-	const { text, disabled, style, loading, onPress } = props;
+	const { text, disabled, style, containerStyle, loading, onPress } = props;
 	return (
 		<TouchableOpacity
+			style={containerStyle}
 			activeOpacity={disabled ? 1 : 0.8}
 			{...!disabled && { onPress }}
 		>
@@ -16,7 +17,7 @@ function VButton(props) {
 				start={{ x: 0, y: 0} }
 				end={{ x: 1, y: 0 }}
 				colors={disabled ? disabledColors : activeColors}
-				style={StyleSheet.flatten([styles.btn, style])}
+				style={StyleSheet.flatten([styles.btn, loading && styles.row, style])}
 			>
 				{loading && <ActivityIndicator color="white" style={styles.loader} />}
 				<Text style={styles.btnText}>{text}</Text>

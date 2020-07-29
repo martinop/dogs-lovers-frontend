@@ -21,13 +21,6 @@ export default StyleSheet.create({
 		fontSize: 18,
 		color: 'white',
 	},
-	logo: {
-		top: 40,
-		right: 15,
-		width: 50,
-		height: 50,
-		position: 'absolute'
-	},
 	yellowGradient: {
 		width: Metrics.screenWidth,
 		height: Metrics.screenHeight * 0.21,

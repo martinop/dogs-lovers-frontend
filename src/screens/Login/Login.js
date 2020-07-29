@@ -21,14 +21,13 @@ function Login(props) {
 				variables: {
 					email: values.email,
 					password: values.password,
-					role: "USER",
 				},
 			});
-			await AsyncStorage.setItem('dogs-lovers-token', data?.login.data.token);
-			await AsyncStorage.setItem('dogs-lovers-role', values.role);
+			await AsyncStorage.setItem('dogs-lovers-token', data?.login?.data.token);
+			await AsyncStorage.setItem('dogs-lovers-role', data?.login?.data?.role);
 			navigation.reset({
 				index: 0,
-				routes: [{ name: role === "USER" ? "SignedInClient" : "SignedInVeterinarian" }],
+				routes: [{ name: data?.login?.data?.role === "USER" ? "SignedInClient" : "SignedInVeterinarian" }],
 			});
 		} catch (error) {
 			InfoAlert('Algo salio mal', error?.graphQLErrors?.[0]?.message);
@@ -38,7 +37,7 @@ function Login(props) {
 
 	return (
 		<Formik
-			initialValues={{ email: '', password: '', role: 'USER' }}
+			initialValues={{ email: '', password: '' }}
 			onSubmit={handleLogin}
 			validate={validateLogin}
 			validateOnBlur
@@ -50,7 +49,6 @@ function Login(props) {
 					<KeyboardAvoidingView style={styles.avoidingView} behavior="position">
 						<View style={styles.container}>
 							<YellowGradient style={styles.yellowGradient} />
-							<Image source={require('../../images/logo.png')} style={styles.logo} resizeMode="contain" />
 							<VText style={styles.title}>Iniciar Sesión</VText>
 							<VText style={styles.subTitle}>Por favor ingresa para continuar</VText>
 							<View style={styles.content}>

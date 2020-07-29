@@ -15,7 +15,7 @@ import { SIGN_UP } from '../../graphql/auth/mutations';
 function SignUp(props) {
 	const { navigation } = props; 
 	const [signup, { loading }] = useMutation(SIGN_UP);
-	async function handleLogin(values) {
+	async function handleSignUp(values) {
 		try {
 			const { data } = await signup({
 				variables: {
@@ -24,14 +24,14 @@ function SignUp(props) {
 					role: "USER",
 				},
 			});
-			await AsyncStorage.setItem('dogs-lovers-token', data?.signup.token);
-			await AsyncStorage.setItem('dogs-lovers-role', values.role);
+			await AsyncStorage.setItem('dogs-lovers-token', data?.signUp.token);
+			await AsyncStorage.setItem('dogs-lovers-role', "USER");
 			navigation.reset({
 				index: 0,
-				routes: [{ name: role === "USER" ? "SignedInClient" : "SignedInVeterinarian" }],
+				routes: [{ name: 'SignedInClient' }],
 			});
 		} catch (error) {
-			InfoAlert('Algo salio mal', error?.graphQLErrors?.[0]?.message);
+			InfoAlert('Algo salio mal', error?.graphQLErrors?.[0]?.message || error.message);
 
 		}
 	}
@@ -39,7 +39,7 @@ function SignUp(props) {
 	return (
 		<Formik
 			initialValues={{ email: '', password: '', role: 'USER', repeatPassword: '' }}
-			onSubmit={handleLogin}
+			onSubmit={handleSignUp}
 			validate={validateSignUp}
 			validateOnBlur
 		>
@@ -53,7 +53,6 @@ function SignUp(props) {
 						</TouchableOpacity>
 						<View style={styles.container}>
 							<YellowGradient style={styles.yellowGradient} />
-							<Image source={require('../../images/logo.png')} style={styles.logo} resizeMode="contain" />
 							<VText style={styles.title}>Registrarse</VText>
 							<VText style={styles.subTitle}>Para poder ingresar debes registrarte</VText>
 							<View style={styles.content}>

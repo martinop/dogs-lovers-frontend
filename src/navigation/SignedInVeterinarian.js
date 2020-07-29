@@ -1,15 +1,15 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import Home from '../screens/Home';
-import Notifications from '../screens/Notifications';
+import Dogs from '../screens/Dogs';
+import DogDetails from '../screens/DogDetails';
 
 const Stack = createStackNavigator();
 
 export default function SignedInVeterinarian() {
 	return (
-		<Stack.Navigator initialRouteName="Home" screenOptions={{ headerShown: false }}>
-			<Stack.Screen name="Home" component={Home} />
-			<Stack.Screen name="Notifications" component={Notifications} />
+		<Stack.Navigator initialRouteName="Dogs" screenOptions={{ headerShown: false }}>
+			<Stack.Screen name="Dogs" component={Dogs} />
+			<Stack.Screen name="DogDetails" component={DogDetails} />
 		</Stack.Navigator>
 	);
 }

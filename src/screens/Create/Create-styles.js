@@ -8,13 +8,16 @@ export default StyleSheet.create({
 		width: Metrics.screenWidth,
 	},
 	container: {
-		paddingHorizontal: 40,
 		paddingTop: 100,
 		height: '100%',
+	},
+	paddingHorizontal: {
+		paddingHorizontal: 40,
 	},
 	title: {
 		fontWeight: "700",
 		fontSize: 36,
+		marginLeft: 40,
 	},
 	subTitle: {
 		fontWeight: "500",
@@ -33,26 +36,41 @@ export default StyleSheet.create({
 		height: Metrics.screenHeight * 0.8,
 		zIndex: -1,
 	},
-	registerContainer: {
-		flexDirection: 'row',
-		justifyContent: 'center',
-		position: 'absolute',
-		width: Metrics.screenWidth,
-		bottom: 30,
-	},
-	registerLabel: {
-		fontWeight: "500",
-		fontSize: 16,
-	},
-	registerCTA: {
-		fontWeight: "700",
-		fontSize: 16,
-		marginLeft: 5,	
-		color: "#ffc402",	
-	},
 	content: {
 		marginTop: 60,
-		justifyContent: 'flex-end',
 		height: Metrics.screenHeight * 0.6,
+	},
+	backBtn: {
+		width: 40,
+	},
+	backBtnContainer: {
+		top: 35,
+		position: 'absolute',
+		left: 30,
+		zIndex: 2,
+	},
+	box: {
+		marginRight: 20,
+	},
+	addBox: {
+		backgroundColor: '#ffc402',
+	},
+	list: {
+		paddingVertical: 20,
+		paddingHorizontal: 40,
+		flexDirection: 'row',
+		flexWrap: 'wrap',
+	},
+	textValue: {
+		fontSize: 16,
+		fontWeight: '500'
+	},
+	label: {
+		fontWeight: "600",
+		fontSize: 22,
+		marginLeft: 40,
+	},
+	contentContainer: {
+		paddingBottom: 60,
 	}
 })
