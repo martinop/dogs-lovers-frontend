@@ -4,7 +4,6 @@ export const LOGIN = gql`
 	mutation(
 		$email: String!
 		$password: String!
-		$role: String!
 	) {
 		login(
 			input: {

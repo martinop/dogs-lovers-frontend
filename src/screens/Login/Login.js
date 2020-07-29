@@ -30,6 +30,7 @@ function Login(props) {
 				routes: [{ name: data?.login?.data?.role === "USER" ? "SignedInClient" : "SignedInVeterinarian" }],
 			});
 		} catch (error) {
+			console.log(error)
 			InfoAlert('Algo salio mal', error?.graphQLErrors?.[0]?.message);
 
 		}

@@ -13,7 +13,7 @@ function SelectableList({
 	onSelect,
 }) {
 	const selectedIds = selected?.map(e => e.id);
-	const _options = options.filter(e => !selectedIds.includes(e.id));
+	const _options = options?.filter(e => !selectedIds?.includes(e.id));
 	const [openModal, setOpenModal] = useState(false);
 	function handleSelect(val) {
 		onSelect(val);
@@ -46,7 +46,7 @@ function SelectableList({
 				animationOut="slideOutRight"
 			>
 				<FlatList
-					keyExtractor={item => item.id}
+					keyExtractor={item => item.id.toString()}
 					initialNumToRender={20}
 					style={styles.modalContent}
 					data={_options}

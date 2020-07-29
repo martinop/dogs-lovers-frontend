@@ -7,7 +7,7 @@ import { GET_MY_DOG } from '../../graphql/dogs/query';
 import { BoxShadow, YellowGradient, LightBackground, Loading, VText, VButton } from '../../components';
 function Home(props) {
 	const { navigation } = props;
-	const { data, loading } = useQuery(GET_MY_DOG)
+	const { data, loading } = useQuery(GET_MY_DOG, { fetchPolicy: "network-only" })
 	const dog = data?.myDog;
 
 	async function onLogout() {
