@@ -31,7 +31,7 @@ function SelectableList({
 						<VText style={styles.textValue}>{val.name}</VText>
 					</BoxShadow>
 				))}
-				{_options.length > 0 && (
+				{_options?.length > 0 && (
 					<BoxShadow style={styles.addBox} onPress={onOpen}>
 						<VText style={styles.textValue}>Agregar</VText>
 					</BoxShadow>

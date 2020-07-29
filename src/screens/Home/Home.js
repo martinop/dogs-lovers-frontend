@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useQuery } from '@apollo/client';
 import AsyncStorage from '@react-native-community/async-storage';
 import { View, Image, TouchableOpacity, ScrollView } from 'react-native';
@@ -7,7 +7,7 @@ import { GET_MY_DOG } from '../../graphql/dogs/query';
 import { BoxShadow, YellowGradient, LightBackground, Loading, VText, VButton } from '../../components';
 function Home(props) {
 	const { navigation } = props;
-	const { data, loading } = useQuery(GET_MY_DOG, { fetchPolicy: "network-only" })
+	const { data, loading, fetchMore } = useQuery(GET_MY_DOG, { fetchPolicy: "network-only" })
 	const dog = data?.myDog;
 
 	async function onLogout() {
@@ -15,6 +15,14 @@ function Home(props) {
 		await AsyncStorage.removeItem('dogs-lovers-role');
 		navigation.replace('Auth');
 	}
+
+	useEffect(() => {
+		const unsubscribe = navigation.addListener('focus', async () => {
+			if(!dog) fetchMore({ updateQuery: (prev, { fetchMoreResult }) => fetchMoreResult});
+    });
+
+    return unsubscribe;
+	}, [navigation, fetchMore, dog])
 
 	if(loading) {
 		return <Loading />

@@ -1,17 +1,35 @@
 import React from 'react';
 import { Formik } from 'formik';
-import { useQuery } from '@apollo/client';
+import { useQuery, useMutation } from '@apollo/client';
 import { View, TouchableOpacity, Image, KeyboardAvoidingView, ScrollView } from 'react-native';
 import styles from './Create-styles';
 import validateCreateDog from '../../validations/createDog';
 import { GET_PROPS } from '../../graphql/dogs/query';
+import { CREATE_DOG } from '../../graphql/dogs/mutation';
+
 import { VTextInput, YellowGradient, SelectableList, VText, LightBackground, VButton } from '../../components';
 function Create(props) {
 	const { navigation } = props; 
-	const { data, loading } = useQuery(GET_PROPS);
+	const { data } = useQuery(GET_PROPS);
+	const [create, { loading }] = useMutation(CREATE_DOG)
 	const properties = data?.props;
 
-	async function handleCreate(values) {}
+	async function handleCreate(values) {
+		try {
+			await create({
+				variables: {
+					name: values.name,
+					age: +values.age,
+					medicaments: values.medicaments?.map(e => ({ id: e.id })),
+					vaccines: values.vaccines?.map(e => ({ id: e.id })),
+					diseases: values.diseases?.map(e => ({ id: e.id })),
+				}
+			})
+			navigation.navigate("Home");
+		} catch(e) {
+			console.log(e)
+		}
+	}
 
 	return (
 		<Formik
@@ -46,7 +64,6 @@ function Create(props) {
 				function onSelectVaccine(vaccine) {
 					onSelectEntity(vaccine, "vaccines");
 				}
-				console.log(values);
 				return (
 					<KeyboardAvoidingView style={styles.avoidingView} behavior="padding">
 						<TouchableOpacity style={styles.backBtnContainer} onPress={() => navigation.goBack()}>
@@ -70,7 +87,7 @@ function Create(props) {
 										onChangeText={handleChange('age')}
 										onBlur={handleBlur('age')}
 										value={values.age}
-										secureTextEntry
+										keyboardType='numeric'
 									/>
 								</View>
 								<SelectableList
