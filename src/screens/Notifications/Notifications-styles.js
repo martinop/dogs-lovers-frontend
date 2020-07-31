@@ -55,5 +55,13 @@ export default StyleSheet.create({
 	},
 	notificationDescription: {
 		fontSize: 16,
+	},
+	empty: {
+		marginTop: 80,
+		textAlign: 'center',
+		fontSize: 22,
+		fontStyle: 'italic',
+		opacity: 0.7,
+		color: 'gray',
 	}
 })

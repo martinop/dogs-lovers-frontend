@@ -16,6 +16,9 @@ function Notifications(props) {
 			<View style={styles.headerContainer}>
 				<VText style={styles.title}>Notificaciones</VText>
 			</View>
+			{!data?.notifications.length && (
+				<VText style={styles.empty}>Aùn no has recibido notificaciones</VText>
+			)}
 			<FlatList
 				style={styles.content}
 				contentContainerStyle={styles.contentContainer}
@@ -32,7 +35,6 @@ function Notifications(props) {
 					</View>
 				)}
 			/>
-
 			<LightBackground style={styles.lightBackground} />
 		</View>
 	)
