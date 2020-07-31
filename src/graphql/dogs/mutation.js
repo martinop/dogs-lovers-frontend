@@ -22,3 +22,26 @@ export const CREATE_DOG = gql`
 		}
 	}
 `;
+
+export const UPDATE_DOG = gql`
+	mutation(
+		$owner: Int!
+		$id: Int!
+		$vaccines: [InputVaccine]
+		$medicaments: [InputMedicament]
+		$diseases: [InputDisease]
+
+	) {
+		update(
+			input: {
+				id: $id
+				owner: $owner
+				diseases: $diseases
+				medicaments: $medicaments
+				vaccines: $vaccines
+			}
+		) {
+			message
+		}
+	}
+`;

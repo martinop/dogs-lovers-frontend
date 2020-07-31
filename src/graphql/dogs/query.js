@@ -49,3 +49,28 @@ export const GET_PROPS = gql`
 		}
 	}
 `
+
+export const GET_DOG = gql`
+	query Dog($id: Int!) {
+		dog(id: $id) {
+			id
+			name
+			age
+			owner {
+				id
+			}
+			medicaments {
+				name
+				id
+			}
+			diseases {
+				id
+				name
+			}
+			vaccines {
+				id
+				name
+			}
+		}
+	}
+`;

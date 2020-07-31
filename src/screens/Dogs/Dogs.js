@@ -33,7 +33,7 @@ function Dogs(props) {
 				refreshing={loading}
 				onRefresh={refetch}
 				renderItem={({ item, index }) => (
-					<TouchableOpacity key={`dog-${index + 1}`} activeOpacity={0.8}>
+					<TouchableOpacity key={`dog-${index + 1}`} activeOpacity={0.8} onPress={() => navigation.navigate("DogDetails", { id: item?.id })}>
 						<BoxShadow style={styles.box}>
 							<Image
 								source={require('../../images/dog.png')}
