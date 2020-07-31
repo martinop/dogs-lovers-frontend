@@ -47,7 +47,6 @@ function SelectableList({
 			>
 				<FlatList
 					keyExtractor={item => item.id.toString()}
-					initialNumToRender={20}
 					style={styles.modalContent}
 					data={_options}
 					renderItem={({ item, index }) => (

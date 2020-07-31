@@ -36,6 +36,15 @@ export default StyleSheet.create({
 		fontSize: 22,
 		marginLeft: 30,
 	},
+	empty: {
+		fontWeight: "400",
+		fontStyle: 'italic',
+		color: 'gray',
+		opacity: 0.7,
+		fontSize: 22,
+		marginLeft: 30,
+		marginTop: 10,
+	},
 	list: {
 		paddingHorizontal: 30,
 		paddingVertical: 20,
